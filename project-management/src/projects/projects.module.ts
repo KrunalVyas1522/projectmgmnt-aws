@@ -3,20 +3,24 @@ import { ProjectsService } from './projects.service';
 import { ProjectsController } from './projects.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProjectRepository } from './repository/projects.repository';
-import { LoggerService } from 'src/utils/logger/winstonLogger';
+import { LoggerService } from '../utils/logger/winstonLogger';
 import { ProjectsModel } from './entities/project.model';
+import { AwsService } from '../utils/aws/aws.service';
+import { LoggerModule } from '../utils/logger/logger.module';
 
 @Module({
-  controllers: [ProjectsController],
-  providers: [
-    ProjectsService,
-    ProjectRepository,
-    LoggerService
-  ],
   imports:[
     TypeOrmModule.forFeature([ProjectsModel]),
-    // LoggerModule
+    ],
+  providers: [
+    LoggerService,
+    ProjectsService,
+    ProjectRepository,
+    AwsService,
+    
   ],
+  controllers: [ProjectsController],
+
   exports:[
     ProjectsService,
     ProjectRepository,

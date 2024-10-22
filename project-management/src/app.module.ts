@@ -15,7 +15,5 @@ import { UsersModule } from './users/users.module';
     TasksModule,
     UsersModule
   ],
-  controllers: [],
-  providers: [],
 })
 export class AppModule {}

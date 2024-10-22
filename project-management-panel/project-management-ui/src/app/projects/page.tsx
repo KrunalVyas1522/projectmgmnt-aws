@@ -12,7 +12,7 @@ const Projects = () => {
   };
 
   const createProject = async () => {
-    await axios.post('http://localhost:3001/projects', { name });
+    await axios.post('http://localhost:3001/projects', { title: 'title1', description: 'This is a static sample description' });
     setName('');
     fetchProjects();
   };

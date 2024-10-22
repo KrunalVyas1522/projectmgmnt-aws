@@ -3,6 +3,7 @@ import { ProjectsService } from './projects.service';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { ProjectsModel } from './entities/project.model';
 
 @ApiTags('Projects')
 @Controller('projects')
@@ -10,13 +11,13 @@ export class ProjectsController {
   constructor(private readonly projectsService: ProjectsService) {}
 
   @Post()
-  create(@Body() createProjectDto: CreateProjectDto) {
-    return this.projectsService.create(createProjectDto);
+  async create(@Body() createProjectDto: CreateProjectDto): Promise<ProjectsModel | Error> {
+    return await this.projectsService.create(createProjectDto);
   }
 
   @Get()
-  findAll() {
-    return this.projectsService.findAll();
+  async findAll(): Promise<ProjectsModel | Error> {
+    return await this.projectsService.findAll();
   }
 
   @Get(':id')

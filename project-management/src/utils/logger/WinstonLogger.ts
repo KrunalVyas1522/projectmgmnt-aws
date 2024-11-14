@@ -14,7 +14,7 @@ export class LoggerService {
   }
 
   info(message: string) {
-    this.logger.info(message);
+    this.logger.log(message);
   }
 
   debug(message: string) {

@@ -10,20 +10,22 @@ import { LoggerModule } from '../utils/logger/logger.module';
 
 @Module({
   imports:[
+    LoggerModule,
     TypeOrmModule.forFeature([ProjectsModel]),
+    
     ],
   providers: [
-    LoggerService,
     ProjectsService,
     ProjectRepository,
     AwsService,
+    LoggerService,
     
   ],
   controllers: [ProjectsController],
 
   exports:[
-    ProjectsService,
     ProjectRepository,
+    ProjectsService,
   ]
 })
 export class ProjectsModule {}
